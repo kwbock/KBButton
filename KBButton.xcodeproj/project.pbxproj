@@ -13,6 +13,7 @@
 		2769916E1644650D001C8375 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2769916C1644650D001C8375 /* Credits.rtf */; };
 		276991711644650D001C8375 /* KBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 276991701644650D001C8375 /* KBAppDelegate.m */; };
 		276991741644650D001C8375 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276991721644650D001C8375 /* MainMenu.xib */; };
+		2769917C16446525001C8375 /* KBButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2769917B16446525001C8375 /* KBButtonCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		2769916F1644650D001C8375 /* KBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBAppDelegate.h; sourceTree = "<group>"; };
 		276991701644650D001C8375 /* KBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBAppDelegate.m; sourceTree = "<group>"; };
 		276991731644650D001C8375 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2769917A16446525001C8375 /* KBButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KBButtonCell.h; path = KBButton/KBButtonCell.h; sourceTree = "<group>"; };
+		2769917B16446525001C8375 /* KBButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KBButtonCell.m; path = KBButton/KBButtonCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,7 @@
 				276991701644650D001C8375 /* KBAppDelegate.m */,
 				276991721644650D001C8375 /* MainMenu.xib */,
 				276991641644650D001C8375 /* Supporting Files */,
+				2769917D16446574001C8375 /* KBButton */,
 			);
 			path = KBButton;
 			sourceTree = "<group>";
@@ -100,6 +104,15 @@
 				2769916C1644650D001C8375 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2769917D16446574001C8375 /* KBButton */ = {
+			isa = PBXGroup;
+			children = (
+				2769917A16446525001C8375 /* KBButtonCell.h */,
+				2769917B16446525001C8375 /* KBButtonCell.m */,
+			);
+			name = KBButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -169,6 +182,7 @@
 			files = (
 				2769916A1644650D001C8375 /* main.m in Sources */,
 				276991711644650D001C8375 /* KBAppDelegate.m in Sources */,
+				2769917C16446525001C8375 /* KBButtonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
