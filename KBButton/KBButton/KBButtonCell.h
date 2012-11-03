@@ -22,9 +22,5 @@ typedef enum {
     NSColor *_color;
     BButtonType kbButtonType;
 }
-
-- (NSColor *)lightenColor:(NSColor *)oldColor value:(float)value;
-- (NSColor *)darkenColor:(NSColor *)oldColor value:(float)value;
-
 @end
 
