@@ -8,7 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface KBButtonCell : NSButtonCell
+typedef enum {
+    BButtonTypeDefault = 0,
+    BButtonTypePrimary,
+    BButtonTypeInfo,
+    BButtonTypeSuccess,
+    BButtonTypeWarning,
+    BButtonTypeDanger,
+    BButtonTypeInverse,
+} BButtonType;
+
+@interface KBButtonCell : NSButtonCell {
+    NSColor *_color;
+    BButtonType kbButtonType;
+}
 
 - (NSColor *)lightenColor:(NSColor *)oldColor value:(float)value;
 - (NSColor *)darkenColor:(NSColor *)oldColor value:(float)value;

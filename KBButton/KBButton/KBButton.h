@@ -8,6 +8,10 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "KBButtonCell.h"
+
 @interface KBButton : NSButton
+
+- (void) setKBButtonType:(BButtonType)type;
 
 @end

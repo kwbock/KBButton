@@ -11,6 +11,10 @@
 
 @implementation KBButton
 
+- (void) setKBButtonType:(BButtonType)type {
+    [[self cell] setKBButtonType:type];
+}
+
 - initWithCoder: (NSCoder *)origCoder
 {
 	BOOL sub = YES;

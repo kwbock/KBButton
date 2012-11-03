@@ -10,14 +10,45 @@
 
 @implementation KBButtonCell
 
+- (void)setKBButtonType:(BButtonType)type {
+    kbButtonType = type;
+}
+
+- (NSColor*)getColorForButtonType {
+    switch (kbButtonType) {
+        case BButtonTypeDefault:
+            return [NSColor colorWithCalibratedRed:0.85f green:0.85f blue:0.85f alpha:1.00f];
+            break;
+        case BButtonTypePrimary:
+            return [NSColor colorWithCalibratedRed:0.00f green:0.33f blue:0.80f alpha:1.00f];
+            break;
+        case BButtonTypeInfo:
+            return [NSColor colorWithCalibratedRed:0.18f green:0.59f blue:0.71f alpha:1.00f];
+            break;
+        case BButtonTypeSuccess:
+            return [NSColor colorWithCalibratedRed:0.32f green:0.64f blue:0.32f alpha:1.00f];
+            break;
+        case BButtonTypeWarning:
+            return [NSColor colorWithCalibratedRed:0.97f green:0.58f blue:0.02f alpha:1.00f];
+            break;
+        case BButtonTypeDanger:
+            return [NSColor colorWithCalibratedRed:0.74f green:0.21f blue:0.18f alpha:1.00f];
+            break;
+        case BButtonTypeInverse:
+            return [NSColor colorWithCalibratedRed:0.13f green:0.13f blue:0.13f alpha:1.00f];
+    }
+}
+
 - (void)drawBezelWithFrame:(NSRect)frame inView:(NSView *)controlView
 {
+    //[self setKBButtonType:BButtonTypeDefault];
+    //NSLog(@"test %@", [self color]);
     NSGraphicsContext* ctx = [NSGraphicsContext currentContext];
     
     CGFloat roundedRadius = 3.0f;
     
-    NSColor *color = [NSColor colorWithDeviceRed:0.00f green:0.33f blue:0.80f alpha:1.00f];
-    
+    //NSColor *color = [NSColor colorWithDeviceRed:0.00f green:0.33f blue:0.80f alpha:1.00f];
+    NSColor *color = [self getColorForButtonType];
     // Draw darker overlay if button is pressed
     if([self isHighlighted]) {
         [ctx saveGraphicsState];
