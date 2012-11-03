@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "KBButton/KBButtonCell.h"
 int main(int argc, char *argv[])
 {
     return NSApplicationMain(argc, (const char **)argv);
