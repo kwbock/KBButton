@@ -142,7 +142,7 @@
 }
 
 - (BOOL) isLightColor:(NSColor *)color {
-    int   totalComponents = [color numberOfComponents];
+    NSInteger   totalComponents = [color numberOfComponents];
     bool  isGreyscale     = totalComponents == 2 ? YES : NO;
     
     CGFloat sum;
