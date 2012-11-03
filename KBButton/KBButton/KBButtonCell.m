@@ -7,6 +7,7 @@
 //
 
 #import "KBButtonCell.h"
+#import "NSColor+ColorExtensions.h"
 
 @implementation KBButtonCell
 
@@ -57,7 +58,7 @@
         [[NSBezierPath bezierPathWithRoundedRect:frame
                                          xRadius:roundedRadius
                                          yRadius:roundedRadius] setClip];
-        [[self darkenColor:color value:0.12f] setFill];
+        [[color darkenColorByValue:0.12f] setFill];
         NSRectFillUsingOperation(frame, NSCompositeSourceOver);
         [ctx restoreGraphicsState];
         
@@ -69,7 +70,7 @@
     [[NSBezierPath bezierPathWithRoundedRect:frame
                                      xRadius:roundedRadius
                                      yRadius:roundedRadius] setClip];
-    [[self darkenColor:color value:0.12f] setFill];
+    [[color darkenColorByValue:0.12f] setFill];
     NSRectFillUsingOperation(frame, NSCompositeSourceOver);
     [ctx restoreGraphicsState];
     
@@ -80,7 +81,7 @@
     NSBezierPath* bgPath = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(frame, 1.0f, 1.0f) xRadius:roundedRadius yRadius:roundedRadius];
     [bgPath setClip];
     
-    NSColor* topColor = [self lightenColor:color value:0.12f];
+    NSColor* topColor = [color lightenColorByValue:0.12f];
     
     // gradient for inner portion of button
     // this
@@ -100,7 +101,7 @@
     NSMutableAttributedString *attrString = [title mutableCopy];
     [attrString beginEditing];
     NSColor *titleColor;
-    if ([self isLightColor:[self getColorForButtonType]]) {
+    if ([[self getColorForButtonType] isLightColor]) {
         titleColor = [NSColor blackColor];
     } else {
         titleColor = [NSColor whiteColor];
@@ -113,47 +114,6 @@
     [ctx restoreGraphicsState];
     
     return r;
-}
-
-- (NSColor *)lightenColor:(NSColor *)oldColor value:(float)value {
-    float red = [oldColor redComponent];
-    red += value;
-    
-    float green = [oldColor greenComponent];
-    green += value;
-    
-    float blue = [oldColor blueComponent];
-    blue += value;
-    
-    return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1.0f];
-}
-
-- (NSColor *)darkenColor:(NSColor *)oldColor value:(float)value {
-    float red = [oldColor redComponent];
-    red -= value;
-    
-    float green = [oldColor greenComponent];
-    green -= value;
-    
-    float blue = [oldColor blueComponent];
-    blue -= value;
-    
-    return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1.0f];
-}
-
-- (BOOL) isLightColor:(NSColor *)color {
-    NSInteger   totalComponents = [color numberOfComponents];
-    bool  isGreyscale     = totalComponents == 2 ? YES : NO;
-    
-    CGFloat sum;
-    
-    if (isGreyscale) {
-        sum = [color redComponent];
-    } else {
-        sum = ([color redComponent]+[color greenComponent]+[color blueComponent])/3.0;
-    }
-    
-    return (sum > 0.8);
 }
 
 @end
