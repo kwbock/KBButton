@@ -10,11 +10,21 @@
 
 @implementation KBAppDelegate
 
-@synthesize button;
+@synthesize defaultButton, primaryButton, infoButton, successButton, warningButton, dangerButton, inverseButton;
+
+- (void)awakeFromNib {
+    [[defaultButton cell] setKBButtonType:BButtonTypeDefault];
+    [[primaryButton cell] setKBButtonType:BButtonTypePrimary];
+    [[infoButton cell] setKBButtonType:BButtonTypeInfo];
+    [[successButton cell] setKBButtonType:BButtonTypeSuccess];
+    [[warningButton cell] setKBButtonType:BButtonTypeWarning];
+    [[dangerButton cell] setKBButtonType:BButtonTypeDanger];
+    [[inverseButton cell] setKBButtonType:BButtonTypeInverse];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[button cell] setKBButtonType:BButtonTypePrimary];
+    
 }
 
 @end

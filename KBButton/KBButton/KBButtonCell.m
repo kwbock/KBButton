@@ -11,7 +11,9 @@
 @implementation KBButtonCell
 
 - (void)setKBButtonType:(BButtonType)type {
+    [[NSGraphicsContext currentContext] saveGraphicsState];
     kbButtonType = type;
+    [[NSGraphicsContext currentContext] restoreGraphicsState];
 }
 
 - (NSColor*)getColorForButtonType {
@@ -97,7 +99,14 @@
     [ctx saveGraphicsState];
     NSMutableAttributedString *attrString = [title mutableCopy];
     [attrString beginEditing];
-    [attrString addAttribute:NSForegroundColorAttributeName value:[NSColor whiteColor] range:NSMakeRange(0, [[self title] length])];
+    NSColor *titleColor;
+    if ([self isLightColor:[self getColorForButtonType]]) {
+        titleColor = [NSColor blackColor];
+    } else {
+        titleColor = [NSColor whiteColor];
+    }
+    
+    [attrString addAttribute:NSForegroundColorAttributeName value:titleColor range:NSMakeRange(0, [[self title] length])];
     [attrString endEditing];
     NSRect r = [super drawTitle:attrString withFrame:frame inView:controlView];
     // 5) Restore the graphics state
@@ -130,6 +139,21 @@
     blue -= value;
     
     return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1.0f];
+}
+
+- (BOOL) isLightColor:(NSColor *)color {
+    int   totalComponents = [color numberOfComponents];
+    bool  isGreyscale     = totalComponents == 2 ? YES : NO;
+    
+    CGFloat sum;
+    
+    if (isGreyscale) {
+        sum = [color redComponent];
+    } else {
+        sum = ([color redComponent]+[color greenComponent]+[color blueComponent])/3.0;
+    }
+    
+    return (sum > 0.8);
 }
 
 @end
