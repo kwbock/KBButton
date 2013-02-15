@@ -6,14 +6,17 @@ KBButton is a subclass of NSButton. It was adapted from [http://github.com/mattl
 
 Usage
 -----
-Start by dragging the KBButton folder into your XCode project.
+Start by dragging the KBButton folder into your Xcode project. Make sure you use the following settings:
+- Destination: [x] Copy items into destination group's folder (if needed)
+- Folders: (*) Create groups for any added folders
+- Add to targets: [x] your-xcode-project
 
 1. Create a NSButton instance in interface builder.
 2. Set the class of the NSButton to KBButton
 
 ### Changing the Color programatically ###
 
-1. Connect NSButton to IBOutlet through interfacebuilder
+1. Connect NSButton to IBOutlet through Interface Builder
 2. call [[button cell] setKBButtonType:BButtonTypeDefault] in awakeFromNib. In the example this is done in KBAppDelegate.m
 
 License
