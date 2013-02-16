@@ -44,14 +44,13 @@
 
 - (void)drawBezelWithFrame:(NSRect)frame inView:(NSView *)controlView
 {
-    //[self setKBButtonType:BButtonTypeDefault];
-    //NSLog(@"test %@", [self color]);
     NSGraphicsContext* ctx = [NSGraphicsContext currentContext];
     
+    // corner radius
     CGFloat roundedRadius = 3.0f;
     
-    //NSColor *color = [NSColor colorWithDeviceRed:0.00f green:0.33f blue:0.80f alpha:1.00f];
     NSColor *color = [self getColorForButtonType];
+    
     // Draw darker overlay if button is pressed
     if([self isHighlighted]) {
         [ctx saveGraphicsState];
@@ -84,7 +83,6 @@
     NSColor* topColor = [color lightenColorByValue:0.12f];
     
     // gradient for inner portion of button
-    // this
     NSGradient* bgGradient = [[NSGradient alloc] initWithColorsAndLocations:
                               topColor, 0.0f,
                               color, 1.0f,
